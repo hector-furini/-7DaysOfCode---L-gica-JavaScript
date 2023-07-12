@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+    <meta charset='UTF-8'>
+    <title>#7 Days of Code</title>
+</head>
+<body>
+    <h1>Lógica JS 2/7</h1>
+    <h1>Formulário interativo</h1>
+    <h2>Bem-vindo!</h2>
+    <h3>Preencha as informações abaixo e clique em enviar: <br></h3>
+
+    <div class='wrapper'>
+        <form id='userForm'>
+
+        <div class='form-uname'>
+            <label id='nameLabel' for='nameField'>Qual seu nome ?</label><br>
+            <input id='nameField' type='text' maxlength='25'></input>
+        </div><br>
+        <div class='Form-uage'>
+            <label id='ageLabel' for='ageField'>Quantos anos você tem? </label><br>
+            <input id='ageField' type='text' maxlength='5'></input>
+        </div><br>
+        <div class='form-ucourse'>
+            <label id='courseLabel' for='courseField'>Qual linguagem de programação você está estudando? </label><br>
+            <input id='courseField' type='text' maxlength='25'></input>
+        </div><br>
+        <div class='formSubmmit'>
+            <button id='subButton' type='button'>Enviar!</button>
+        </div>
+        </form>
+
+</body>
+</html>
+
+<script>
+
+    function showData() {
+        let nameField = document.getElementById('nameField').value;
+        let ageField = document.getElementById('ageField').value;
+        let courseField = document.getElementById('courseField').value;
+        alert('Olá ' + nameField + ', você tem ' + ageField + ' anos e já está aprendendo ' + courseField + '!');
+        likeness(courseField);
+    }
+
+    function likeness (courseField) {
+        var likeness = 0;
+        while (likeness != 1 || likeness != 2) {
+            var likeness = prompt('Você gosta de estudar ' + courseField + '? Responda com número 1 para SIM ou 2 para NÃO.');
+            if (likeness == 1) {
+                alert('1 > Muito bom! Continue estudando e você terá muito sucesso.');
+                break;
+            } else if (likeness == 2) {
+                alert('2 > Ahh que pena... Já tentou aprender outras linguagens ?');
+                break;
+            } else {
+                alert('Valor digitado invalido! Tente novamente.');
+    }}}
+
+    var subButton = document.getElementById('subButton');
+    subButton.addEventListener('click', showData, false);
+
+</script>
