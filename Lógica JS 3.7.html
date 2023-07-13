@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<head>
+    <title>#7 Days of Code</title>
+</head>
+<body>
+    <div>
+    <center><h1>Lógica JS 3/7</h1></center>
+    <center><h2>Joguinho do aprendizado</h1></center>
+    <center><p>Preencha as informações e clique em enviar:</p><br></center>
+    </div>
+
+    <div class='wrapper'><center>
+        <form id='uFirstForm'>
+        <div class='form-uFirst'>
+            <label id='firstChoice' for='firstField'>Você quer seguir para área Front-end ou Back-end ?</label><br><br>
+            <input id='first1Input' type='checkbox'>Front-End</input>
+            <input id='first2Input' type='checkbox'>Back-End</input>
+        </div>
+        <div class='firstSubmmit'>
+            <nobr><button id='firstButton' type='button'>Enviar</button></nobr>
+        </div>
+        </form>
+    </center></div>
+</body>
+</html>
+
+<script>
+    const head =
+    '<center><h1>Lógica JS 3/7</h1></center>' + 
+    '<center><h2>Joguinho do aprendizado</h1></center>'
+
+    const thanksMessage = `<body>
+        <br><center><h2>Obrigado por jogar <3</h2></center><br>
+    </body> `
+
+    function firstData(){
+            var frontCheck = document.getElementById('first1Input').checked;
+            var backCheck = document.getElementById('first2Input').checked;
+
+
+            if (frontCheck == true && backCheck == false){
+                document.write(head);
+                alert('Que legal que você quer seguir Front-End!');
+                var secondQuery = prompt('Você quer aprender React ou Vue ?').toLowerCase();
+
+                while (secondQuery != 'react' && secondQuery != 'vue') {
+                    alert('Por favor. Responda com React ou Vue.');
+                    var secondQuery = prompt('Você quer aprender React ou Vue ?').toLowerCase();
+                }
+                secondData(secondQuery)
+            } else if (frontCheck == false && backCheck == true){
+                document.write(head);
+                alert('Que legal que você quer seguir Back-End!');
+                var secondQuery = prompt('Você quer aprender C# ou Java ?').toLowerCase();
+
+                while (secondQuery != 'c#' && secondQuery != 'java') {
+                    alert('Por favor. Responda com C# ou Java.');
+                    var secondQuery = prompt('Você quer aprender C# ou Java ?').toLowerCase();
+                }
+                secondData(secondQuery)
+            } else {
+                alert('Erro. Por favor, tente novamente!');
+            }
+
+        
+    }
+
+    function secondData(secondQuery) {
+        var secondQuery = secondQuery.charAt(0).toUpperCase() + secondQuery.slice(1)
+        var thirdQuery = prompt(`E você quer seguir se especializando em ${secondQuery} (Responda: 1) ou seguir desenvolvendo
+para se tornar Fullstack (responda: 2)?`);
+        if (thirdQuery != 1 && thirdQuery != 2){
+            while (thirdQuery != 1 && thirdQuery != 2) {
+                alert('Resposta invalida. Tente novamente.');
+                var thirdQuery = prompt(`E você quer seguir se especializando em ${secondQuery} (Responda: 1) ou seguir desenvolvendo
+para se tornar Fullstack (responda: 2)?`);
+        }}else if (thirdQuery == 1) {
+            alert(`Que legal que você quer continuar se especializando em ${secondQuery}!`);
+            thirdData()
+        } else if (thirdQuery == 2) {
+            alert(`Que legal que você quer continuar se tornar Fullstack!`);
+            thirdData()
+        }
+
+}
+
+    function thirdData() {
+        var okCheck = false;
+        let fourthQuery = [];
+
+        while (okCheck == false) {
+            let queryInput = prompt('Digite tecnologias ou conhecimentos que você quer aprender nessa área: (Digite ok para finalizar)');
+            fourthQuery.push(queryInput);
+            console.log(fourthQuery);
+            var okCheck = fourthQuery.includes('ok');
+            console.log(okCheck);
+            
+        }
+
+        fourthQuery = fourthQuery.filter(e => e !== 'ok');
+        alert(`Que legal que você tem interesse nessas áreas: ${fourthQuery.join(', ')}`);
+        document.write(thanksMessage)
+    }
+
+    var subButton = document.getElementById('firstButton');
+    subButton.addEventListener('click', firstData, false)
+
+</script>
