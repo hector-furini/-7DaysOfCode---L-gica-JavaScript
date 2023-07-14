@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>7# Days of Code</title>
+</head>
+<body>
+    <div>
+        <center><h1>Lógica JS 4/7</h1></center>
+        <center><h2>Joguinho de adivinhação</h2></center>
+    </div>
+
+    <div class='wrapper'><center>
+        <form class='uGuessForm'>
+            <label id='uForm' for='inputLabel'>Escolha um número entre 10 e 0:</label><br><br>
+            <input id='uChoice' type='text' maxlength='2'></input><br>
+            <button id='subButton' type='button'>Enviar</button>
+        </form>
+    </center></div>
+    
+</body>
+</html>
+
+<script>
+
+    var randomInt = Math.floor(Math.random() * (10 - 0 + 1) + 0);
+    var cont = 1;
+
+    function preCheck () {
+        var userInt = document.getElementById('uChoice').value;
+        userInt = Number(userInt)
+        if (userInt > 10 || userInt < 0 || isNaN(userInt)) {
+            alert('Valor digitado inválido. Tente novamente.');
+            document.getElementById('uChoice').focus();
+        } else {
+            compareNumbers(randomInt, userInt);
+        }
+
+    }
+    function compareNumbers(randomInt, userInt) {
+        if (cont > 3) {
+            alert('Que pena... Foi sua ultima tentativa.');
+            alert(`Eu gerei o número ${randomInt}!`);
+            alert(`Gerando um número novo...`);
+            location.reload();
+            
+        } else {
+            if (randomInt != userInt) {
+             alert('Não foi o número que adivinhei... Tente novamente!');
+             alert(`Foi sua tentativa ${cont}/3`);
+         } else if (randomInt == userInt) {
+            alert(`Parabéns!! Você acertou! Eu gerei o número ${randomInt}.`);
+            alert('Gerando um número novo...');
+            location.reload();
+        }}
+        cont = cont + 1;
+    }
+
+    var subButton = document.getElementById('subButton');
+    subButton.addEventListener('click', preCheck , false)
+</script>
