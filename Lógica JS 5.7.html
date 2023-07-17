@@ -57,19 +57,19 @@
     addItem();
     while (continueToAdd == 1){
         let continueToAdd = Number(prompt('Deseja voltar para a escolha de categorias? (0) Finalizar (1) Voltar'));
-            if (continueToAdd == 1) {
-                addItem();
-            } else if (continueToAdd == 0) {
-                alert('Obrigado por usar! Aqui está sua lista:');
-                for (var listNumber = 0; listNumber < 5; listNumber++) {
-                    document.write(`
-                    <center><h3>${categoriesStr[listNumber]}: ${categories[listNumber].join(', ')}<br></h3></center>
-                    `);  
-                }
-                break;
-            } else {
-                alert('Valor digitado incorreto. Tente novamente.');
+        if (continueToAdd == 1) {
+            addItem();
+        } else if (continueToAdd == 0) {
+            alert('Obrigado por usar! Aqui está sua lista:');
+            for (var listNumber = 0; listNumber < 5; listNumber++) {
+                document.write(`
+                <center><h3>${categoriesStr[listNumber]}: ${categories[listNumber].join(', ')}<br></h3></center>
+                `);  
             }
+            break;
+        } else {
+            alert('Valor digitado incorreto. Tente novamente.');
+        }
     }
 
 </script>
