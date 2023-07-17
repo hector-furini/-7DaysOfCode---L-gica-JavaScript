@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7# Days of Code</title>
+</head>
+<body>
+    <div>
+        <center><h1>Lógica JS 5/7</h1></center>
+        <center><h2>Lista de compras</h2></center><br>
+    </div>
+</body>
+</html>
+
+<script>
+    // Iniciando as variavéis
+    let Fruits = [];
+    let Vegetables = [];
+    let Dairy =[];
+    let Frozen =[];
+    let Candy = [];
+    let categories = [Fruits, Vegetables, Dairy, Frozen, Candy];
+    let categoriesStr = ['Frutas', 'Verduras', 'Laticínios', 'Congelados', 'Doces'];
+    var listNumber = 0
+    var continueToAdd = 1
+    var cont = 1
+
+    // Criando a função para guardar items
+    function pushList (listNumber, item) {
+        categories[listNumber - 1].push(item);
+    }
+
+    // Criando o função para lidar com o input do usuário
+    function addItem (){
+        while (listNumber > 5 || listNumber < 1 || isNaN(listNumber)) {
+            var listNumber = Number(prompt('Escolha a categoria: (1) Frutas (2)Verduras (3) Laticínios (4) Congelados (5) Doces'));
+            if (listNumber > 5 || listNumber < 1 || isNaN(listNumber)){
+                alert('Valor digitado incorreto. Tente novamente.');
+            }
+        }
+        var cont = 1
+        while (cont == 1) {
+            var item = prompt('Digite o item para ser adicionado: ');
+            var cont = Number(prompt(`Quer adicionar mais um a categoria ${categoriesStr[listNumber - 1]} ? (0) Não (1) Sim`));
+            while (cont != 0 && cont != 1){
+                if (cont != 0 && cont != 1) {
+                    alert('Valor digitado incorreto. Tente novamente');
+                }
+                var cont = Number(prompt(`Quer adicionar mais um a categoria ${categoriesStr[listNumber - 1]} ? (0) Não (1) Sim`));
+            }
+            pushList(listNumber, item);
+        }
+    }
+
+    // Chamando a função que adiciona os items na primeira vez e perguntando depois se o usuário quer continuar:
+    addItem();
+    while (continueToAdd == 1){
+        let continueToAdd = Number(prompt('Deseja voltar para a escolha de categorias? (0) Finalizar (1) Voltar'));
+            if (continueToAdd == 1) {
+                addItem();
+            } else if (continueToAdd == 0) {
+                alert('Obrigado por usar! Aqui está sua lista:');
+                for (var listNumber = 0; listNumber < 5; listNumber++) {
+                    document.write(`
+                    <center><h3>${categoriesStr[listNumber]}: ${categories[listNumber].join(', ')}<br></h3></center>
+                    `);  
+                }
+                break;
+            } else {
+                alert('Valor digitado incorreto. Tente novamente.');
+            }
+    }
+
+</script>
