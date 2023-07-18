@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7# Days of Code</title>
+</head>
+<body>
+    <div>
+        <center><h1>Lógica JS 7/7</h1>
+        <h2>Calculadora</h2><br></center>
+    </div>
+</body>
+</html>
+<script>
+
+    //Adição
+    function addition () {
+        do {
+            let firstUnumber = Number(prompt('Digite o primeiro número: '))
+            let secondUnumber = Number(prompt('Digite o número a ser adicionado: '));
+            let sumResult = firstUnumber + secondUnumber;
+            alert(`O resultado da soma é: ${sumResult}`);
+            operator = Number(prompt('Deseja fazer mais uma soma? (1) Sim (2) Não'));
+        } while (operator != 2)
+    }
+
+    //Subtração
+    function subtraction (){
+        do {
+            let firstUnumber = Number(prompt('Digite o primeiro número: '))
+            let secondUnumber = Number(prompt('Digite o número a ser subtraído: '));
+            let subResult = firstUnumber - secondUnumber;
+            alert(`O resultado da subtração é: ${subResult}`);
+            operator = Number(prompt('Deseja fazer mais uma subtração? (1) Sim (2) Não'));
+        } while (operator != 2)
+    }
+    //Multiplicação
+    function multiply () {
+        do {
+            let firstUnumber = Number(prompt('Digite o primeiro número: '))
+            let secondUnumber = Number(prompt('Digite o número a ser multiplicado: '));
+            let multiplyResult = firstUnumber * secondUnumber;
+            alert(`O resultado da multiplicação é: ${multiplyResult}`);
+            operator = Number(prompt('Deseja fazer mais uma multiplicação? (1) Sim (2) Não'));
+        } while (operator != 2)
+
+    }
+    //Divisão
+    function divide () {
+        do {
+            let firstUnumber = Number(prompt('Digite o numerador: '))
+            let secondUnumber = Number(prompt('Digite o denominador: '));
+            let divideResult = firstUnumber / secondUnumber;
+            alert(`O resultado da divisão é: ${divideResult}`);
+            operator = Number(prompt('Deseja fazer mais uma divisão? (1) Sim (2) Não'));
+        } while (operator != 2)
+
+    }
+    // Tabuada
+    function table () {
+        do {
+            do {
+                var firstUnumber = Number(prompt('Digite o primeiro fator: '));
+                var multiplyFactor = Number(prompt('Até quantas vezes você quer a multiplicação ?'));
+                for (let cont = 1; cont <= multiplyFactor; cont++) {
+                    let multiplyResult = firstUnumber * cont;
+                    alert(`${firstUnumber} X ${cont} = ${multiplyResult}`);
+                }
+            } while (isNaN(multiplyFactor) || isNaN(firstUnumber))
+
+            operator = Number(prompt('Deseja fazer mais uma divisão? (1) Sim (2) Não'));
+        } while (operator != 2 || isNaN(operator))
+        
+
+    }
+
+    // Lidar com o input do usuario
+    do {
+        alert('Escolha uma operação:')
+        operator = Number(prompt('(1) Adição (2) Subtração (3) Multiplicação (4)Divisão (5)Tabuada (0)Sair'));
+            switch (operator) {
+                case 0:
+                    alert('Até a próxima =)');
+                    document.write('<center><h3>Obrigado por usar!</h3></center>');
+                    break;
+                case 1:
+                    addition();
+                    break;
+                case 2:
+                    subtraction();
+                    break;
+                case 3:
+                    multiply();
+                    break;
+                case 4:
+                    divide();
+                    break;
+                case 5:
+                    table();
+                    break;
+                default:
+                    alert('Valor digitado invalido. Tente novamente.');
+        }
+    } while (operator != 0)
+
+
+
+
+</script>
